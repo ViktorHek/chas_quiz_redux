@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function Start() {
+  const dispatch = useDispatch();
   const [val, setVal] = useState("");
   const [wrongPassword, setWrongPassword] = useState(false);
   const password = "pass";
@@ -10,26 +12,34 @@ function Start() {
   }
 
   function handleLogin() {
-    let url = window.location.href;
     if (val === password) {
-      window.location.href = url + "admin";
+      dispatch({ type: "SET_VIEW", payload: "admin" });
     } else {
       setWrongPassword(true);
     }
   }
 
   function handleQuiz() {
-    let url = window.location.href;
-    window.location.href = url + "quiz";
+    dispatch({ type: "SET_VIEW", payload: "quiz" });
   }
 
   return (
-    <div className="Start">
-      <h1>start</h1>
-      <input onChange={() => handleInput(event)} />
-      <button onClick={() => handleLogin()}>Login</button>
-      {wrongPassword && <p style={{ color: "red" }}>Wrong Password</p>}
-      <button onClick={handleQuiz}>Quiz</button>
+    <div className="start">
+      <h1 style={{marginTop: '20px'}}>Login or start Quiz</h1>
+      <div className="start-options-container">
+        <div className="login-container center">
+          <h3>Log in Here</h3>
+          <div>
+            <input onChange={(event) => handleInput(event)} />
+            <button onClick={() => handleLogin()}>Login</button>
+          </div>
+          {wrongPassword && <p style={{ color: "red" }}>Wrong Password</p>}
+        </div>
+        <div className="center" style={{flexDirection: 'column'}}>
+          <h3>Start the Quiz</h3>
+          <button onClick={handleQuiz} style={{margin: '10px'}}>Quiz</button>
+        </div>
+      </div>
     </div>
   );
 }

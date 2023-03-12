@@ -8,6 +8,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         questions: action.payload
       }
+    case 'SET_VIEW':
+      return {
+        ...state,
+        view: action.payload
+      }
     default:
       return state
   }

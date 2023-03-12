@@ -1,35 +1,48 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function Admin() {
-  const [inputVal, setInputVal] = useState("");
+  const dispatch = useDispatch();
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const { questions } = useSelector((state) => state);
+  const [displayQuestions, setDisplayQuestions] = useState(questions);
 
-  function handleChange(event) {
-    setInputVal(event.target.value);
+  function handleChangeQuestion(event) {
+    setQuestion(event.target.value);
+  }
+  function handleChangeAnswer(event) {
+    setAnswer(event.target.value);
   }
 
   function handleAdd() {
     let newArr = questions;
     let obj = {
-      question: inputVal,
-      answer: "",
+      question: question,
+      answer: answer,
     };
     newArr.push(obj);
-    setInputVal("")
+    setDisplayQuestions(newArr);
+    dispatch({ type: "ADD_QUESTION", payload: newArr });
+    setQuestion("");
+    setAnswer("");
   }
 
-  let displayQuestions = questions.map((el) => {
-    return <p key={el.question}>{el.question}</p>;
-  });
+  function gotoQuiz() {
+    dispatch({ type: "SET_VIEW", payload: "quiz" });
+  }
 
   return (
     <div className="Admin">
       <h1>admin</h1>
-      <a href={`/quiz`}>Go to Quiz</a>
-      <input onChange={() => handleChange(event)} />
+      <button onClick={gotoQuiz}>Go to Quiz</button>
+      <input onChange={(event) => handleChangeQuestion(event)} />
+      <input onChange={(event) => handleChangeAnswer(event)} />
       <button onClick={() => handleAdd()}>add</button>
-      {displayQuestions && displayQuestions}
+      {displayQuestions &&
+        displayQuestions.map((el) => {
+          return <p key={el.question}>{el.question}</p>;
+        })}
     </div>
   );
 }
