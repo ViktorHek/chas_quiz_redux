@@ -25,7 +25,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1bd698c2;
+  background-color: #2929dd;
   border: 1px solid grey;
   border-radius: 15px;
 }
@@ -73,4 +73,49 @@ button:hover {
 
 .login-container > button {
   margin-left: 5px;
+}
+
+.admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 500px;
+  width: 600px;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.admin > h1 {
+  margin-top: 20px;
+}
+
+.admin-content-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60%;
+  width: 100%;
+  flex-direction: row;
+  border: 1px solid black;
+}
+
+.admin-content-container > div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}
+
+.admin-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin-display-question {
+  padding: 10px;
+  border: 1px solid black;
 }

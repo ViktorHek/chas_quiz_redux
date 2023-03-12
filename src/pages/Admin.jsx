@@ -33,16 +33,35 @@ function Admin() {
   }
 
   return (
-    <div className="Admin">
+    <div className="admin">
       <h1>admin</h1>
-      <button onClick={gotoQuiz}>Go to Quiz</button>
-      <input onChange={(event) => handleChangeQuestion(event)} />
-      <input onChange={(event) => handleChangeAnswer(event)} />
-      <button onClick={() => handleAdd()}>add</button>
-      {displayQuestions &&
-        displayQuestions.map((el) => {
-          return <p key={el.question}>{el.question}</p>;
-        })}
+      <div className="admin-content-container">
+        <div>
+          <button onClick={gotoQuiz}>Go to Quiz</button>
+        </div>
+        <div className="admin-input-container">
+          <span>
+            <p>Question:</p>
+            <input onChange={(event) => handleChangeQuestion(event)} />
+          </span>
+          <span>
+            <p>Answer:</p>
+            <input onChange={(event) => handleChangeAnswer(event)} />
+          </span>
+          <button onClick={() => handleAdd()}>add</button>
+        </div>
+        <div className="center" style={{flexDirection: 'column'}}>
+          {displayQuestions &&
+            displayQuestions.map((el) => {
+              return (
+                <div key={el.question} className="admin-display-question">
+                  <p>Question: {el.question}</p>
+                  <p>Answer: {el.answer}</p>
+                </div>
+              );
+            })}
+        </div>
+      </div>
     </div>
   );
 }

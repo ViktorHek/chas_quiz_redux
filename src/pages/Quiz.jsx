@@ -37,15 +37,17 @@ function Quiz() {
   return (
     <div className="Quiz">
       <h1>quiz</h1>
-      <div id="inputContainer">{displayQuestions && displayQuestions}</div>
-      <button onClick={() => handleAnswer()}>Submit</button>
-      {showResult && (
-        <div>
-          {result.map((el) => {
-            return el.question;
-          })}
-        </div>
-      )}
+      <div>
+        <div id="inputContainer">{displayQuestions && displayQuestions}</div>
+        <button onClick={() => handleAnswer()}>Submit</button>
+        {showResult && (
+          <div>
+            {result.map((el) => {
+              return el.question;
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
