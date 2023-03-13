@@ -79,7 +79,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 500px;
+  height: 600px;
   width: 600px;
   flex-direction: column;
   border: 1px solid black;
@@ -93,7 +93,7 @@ button:hover {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 60%;
+  height: 85%;
   width: 100%;
   flex-direction: row;
   border: 1px solid black;
@@ -118,4 +118,30 @@ button:hover {
 .admin-display-question {
   padding: 10px;
   border: 1px solid black;
+}
+
+.checkbox {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  border: 3px solid green;
+  border-radius: 15px;
+  position: relative;
+}
+
+.checkbox > .checked {
+  position: absolute;
+  height: 11px;
+  width: 2px;
+  border: 1px solid red;
+  background-color: red;
+  left: 8px;
+  top: 3px;
+}
+
+.checked:first-child {
+  transform: rotate(45deg);
+}
+.checked:nth-child(2) {
+  transform: rotate(-45deg);
 }

@@ -1,5 +1,5 @@
 const initialState = {
-  questions: [{ question: "waddup?", answer: "nuting", val: "" }],
+  questions: [{ question: "waddup?", options: ["Choose", "nuting", "putin", "looting"], answerId: 1 }],
   view: 'start'
 };
 
